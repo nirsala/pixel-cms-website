@@ -250,39 +250,41 @@ document.addEventListener('DOMContentLoaded', () => {
         fontSize = 100; localStorage.setItem('acc-font', 100); applyFont();
     });
 
-    // ===== COOKIE BANNER =====
-    const cookieBanner  = document.getElementById('cookieBanner');
-    const cookieAccept  = document.getElementById('cookieAccept');
-    const cookieDecline = document.getElementById('cookieDecline');
-    const openPrivacy   = document.getElementById('openPrivacy');
-
-    if (!localStorage.getItem('cookie-consent')) {
-        setTimeout(() => { cookieBanner.hidden = false; }, 1200);
-    }
-
-    const closeCookie = (val) => {
-        cookieBanner.hidden = true;
-        localStorage.setItem('cookie-consent', val);
-    };
-    cookieAccept.addEventListener('click',  () => closeCookie('accepted'));
-    cookieDecline.addEventListener('click', () => closeCookie('declined'));
-
     // ===== PRIVACY MODAL =====
     const privacyOverlay  = document.getElementById('privacyOverlay');
-    const privacyClose    = document.getElementById('privacyClose');
-    const privacyCloseBtn = document.getElementById('privacyCloseBtn');
 
     const openPrivacyModal  = () => { privacyOverlay.hidden = false; document.body.style.overflow = 'hidden'; };
     const closePrivacyModal = () => { privacyOverlay.hidden = true;  document.body.style.overflow = ''; };
 
-    openPrivacy.addEventListener('click', openPrivacyModal);
+    // ===== PRIVACY BAR (פס תחתון) =====
+    const privacyBar = document.getElementById('privacyBar');
+
+    if (localStorage.getItem('privacy-accepted')) {
+        privacyBar.classList.add('accepted');
+    } else {
+        privacyBar.innerHTML = `
+            <span class="privacy-bar-text">
+                האתר משתמש בעוגיות לשיפור חוויית הגלישה. בשימוש באתר אתם מסכימים ל<button class="privacy-bar-link" id="openPrivacy">מדיניות הפרטיות</button> שלנו.
+            </span>
+            <button class="btn-privacy-accept" id="privacyAcceptBtn">מאשר/ת ומסכים/ה</button>
+        `;
+        document.getElementById('privacyAcceptBtn').addEventListener('click', () => {
+            localStorage.setItem('privacy-accepted', '1');
+            privacyBar.classList.add('accepted');
+        });
+        document.getElementById('openPrivacy').addEventListener('click', openPrivacyModal);
+    }
+
+    const privacyClose    = document.getElementById('privacyClose');
+    const privacyCloseBtn = document.getElementById('privacyCloseBtn');
+
     privacyClose.addEventListener('click', closePrivacyModal);
     privacyCloseBtn.addEventListener('click', closePrivacyModal);
     privacyOverlay.addEventListener('click', e => { if (e.target === privacyOverlay) closePrivacyModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !privacyOverlay.hidden) closePrivacyModal(); });
 
     // Footer privacy link
-    document.querySelectorAll('a[href="#privacy"], a[href="#"]').forEach(a => {
+    document.querySelectorAll('a').forEach(a => {
         if (a.textContent.trim() === 'מדיניות פרטיות') {
             a.addEventListener('click', e => { e.preventDefault(); openPrivacyModal(); });
         }
