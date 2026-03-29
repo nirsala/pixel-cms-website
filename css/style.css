@@ -11,6 +11,8 @@
     box-sizing: border-box;
 }
 
+[hidden] { display: none !important; }
+
 :root {
     --color-primary: #d71d43;
     --color-primary-light: #e8234f;
