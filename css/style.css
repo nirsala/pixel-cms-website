@@ -502,6 +502,13 @@ ul { list-style: none; }
     margin-top: 4px;
 }
 
+.stat-inline {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0;
+}
+
 /* ========================================
    SECTIONS
    ======================================== */
