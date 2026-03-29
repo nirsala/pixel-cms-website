@@ -163,4 +163,129 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ===== INDUSTRIES TABS =====
+    const indTabs = document.querySelectorAll('.ind-tab');
+    const indCards = document.querySelectorAll('.industry-card[data-cat]');
+
+    indTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            indTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const cat = tab.dataset.cat;
+            indCards.forEach(card => {
+                if (cat === 'all' || card.dataset.cat === cat) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // ===== ACCESSIBILITY PANEL =====
+    const accessBtn     = document.getElementById('accessBtn');
+    const accessPanel   = document.getElementById('accessPanel');
+    const accessOverlay = document.getElementById('accessOverlay');
+    const accessClose   = document.getElementById('accessClose');
+    const accessResetAll = document.getElementById('accessResetAll');
+
+    const openAccess = () => {
+        accessPanel.hidden  = false;
+        accessOverlay.hidden = false;
+        accessPanel.focus?.();
+    };
+    const closeAccess = () => {
+        accessPanel.hidden  = true;
+        accessOverlay.hidden = true;
+        accessBtn.focus();
+    };
+
+    accessBtn.addEventListener('click', openAccess);
+    accessClose.addEventListener('click', closeAccess);
+    accessOverlay.addEventListener('click', closeAccess);
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && !accessPanel.hidden) closeAccess();
+    });
+
+    // Font size
+    let fontSize = parseFloat(localStorage.getItem('acc-font') || 100);
+    const applyFont = () => { document.documentElement.style.fontSize = (fontSize / 100) * 16 + 'px'; };
+    applyFont();
+
+    document.getElementById('fontIncrease').addEventListener('click', () => {
+        if (fontSize < 150) { fontSize += 10; localStorage.setItem('acc-font', fontSize); applyFont(); }
+    });
+    document.getElementById('fontDecrease').addEventListener('click', () => {
+        if (fontSize > 80) { fontSize -= 10; localStorage.setItem('acc-font', fontSize); applyFont(); }
+    });
+    document.getElementById('fontReset').addEventListener('click', () => {
+        fontSize = 100; localStorage.setItem('acc-font', fontSize); applyFont();
+    });
+
+    // Toggle helpers
+    const makeToggle = (btnId, bodyClass, storageKey) => {
+        const btn = document.getElementById(btnId);
+        const stored = localStorage.getItem(storageKey) === '1';
+        if (stored) { document.body.classList.add(bodyClass); btn.setAttribute('aria-pressed', 'true'); btn.classList.add('active'); }
+        btn.addEventListener('click', () => {
+            const on = document.body.classList.toggle(bodyClass);
+            btn.setAttribute('aria-pressed', String(on));
+            localStorage.setItem(storageKey, on ? '1' : '0');
+        });
+    };
+
+    makeToggle('toggleContrast',   'acc-high-contrast',  'acc-contrast');
+    makeToggle('toggleGrayscale',  'acc-grayscale',       'acc-gray');
+    makeToggle('toggleInvert',     'acc-invert',          'acc-invert');
+    makeToggle('toggleLinks',      'acc-links',           'acc-links');
+    makeToggle('toggleReadable',   'acc-readable',        'acc-readable');
+    makeToggle('toggleAnimations', 'acc-no-animations',   'acc-no-anim');
+    makeToggle('toggleCursor',     'acc-big-cursor',      'acc-cursor');
+    makeToggle('toggleFocus',      'acc-focus-highlight', 'acc-focus');
+
+    accessResetAll.addEventListener('click', () => {
+        ['acc-contrast','acc-gray','acc-invert','acc-links','acc-readable','acc-no-anim','acc-cursor','acc-focus'].forEach(k => localStorage.removeItem(k));
+        ['acc-high-contrast','acc-grayscale','acc-invert','acc-links','acc-readable','acc-no-animations','acc-big-cursor','acc-focus-highlight'].forEach(c => document.body.classList.remove(c));
+        document.querySelectorAll('.access-toggle').forEach(b => b.setAttribute('aria-pressed','false'));
+        fontSize = 100; localStorage.setItem('acc-font', 100); applyFont();
+    });
+
+    // ===== COOKIE BANNER =====
+    const cookieBanner  = document.getElementById('cookieBanner');
+    const cookieAccept  = document.getElementById('cookieAccept');
+    const cookieDecline = document.getElementById('cookieDecline');
+    const openPrivacy   = document.getElementById('openPrivacy');
+
+    if (!localStorage.getItem('cookie-consent')) {
+        setTimeout(() => { cookieBanner.hidden = false; }, 1200);
+    }
+
+    const closeCookie = (val) => {
+        cookieBanner.hidden = true;
+        localStorage.setItem('cookie-consent', val);
+    };
+    cookieAccept.addEventListener('click',  () => closeCookie('accepted'));
+    cookieDecline.addEventListener('click', () => closeCookie('declined'));
+
+    // ===== PRIVACY MODAL =====
+    const privacyOverlay  = document.getElementById('privacyOverlay');
+    const privacyClose    = document.getElementById('privacyClose');
+    const privacyCloseBtn = document.getElementById('privacyCloseBtn');
+
+    const openPrivacyModal  = () => { privacyOverlay.hidden = false; document.body.style.overflow = 'hidden'; };
+    const closePrivacyModal = () => { privacyOverlay.hidden = true;  document.body.style.overflow = ''; };
+
+    openPrivacy.addEventListener('click', openPrivacyModal);
+    privacyClose.addEventListener('click', closePrivacyModal);
+    privacyCloseBtn.addEventListener('click', closePrivacyModal);
+    privacyOverlay.addEventListener('click', e => { if (e.target === privacyOverlay) closePrivacyModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !privacyOverlay.hidden) closePrivacyModal(); });
+
+    // Footer privacy link
+    document.querySelectorAll('a[href="#privacy"], a[href="#"]').forEach(a => {
+        if (a.textContent.trim() === 'מדיניות פרטיות') {
+            a.addEventListener('click', e => { e.preventDefault(); openPrivacyModal(); });
+        }
+    });
+
 });
