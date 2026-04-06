@@ -1174,5 +1174,20 @@
     </div>
 
     <script src="js/app.js"></script>
+    <script>
+    // Dashboard mockup tabs
+    document.addEventListener('DOMContentLoaded', function() {
+        var menuItems = document.querySelectorAll('.mockup-menu-item[data-panel]');
+        var panels = document.querySelectorAll('.mockup-panel');
+        menuItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                menuItems.forEach(function(i) { i.classList.remove('active'); });
+                panels.forEach(function(p) { p.classList.remove('active'); });
+                item.classList.add('active');
+                document.getElementById('panel-' + item.dataset.panel).classList.add('active');
+            });
+        });
+    });
+    </script>
 </body>
 </html>
