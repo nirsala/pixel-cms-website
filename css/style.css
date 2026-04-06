@@ -146,16 +146,17 @@ ul { list-style: none; }
     100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
-/* הובר — הגדלה ל-300% וחזרה */
+/* הובר — הגדלה ל-300% עם אנימציה, המתנה 2 שניות, חזרה */
 .nav-logo:hover .nav-logo-img {
-    animation: logoZoom 2s forwards;
+    animation: logoZoom 3.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes logoZoom {
-    0%   { transform: scale(1); }
-    15%  { transform: scale(3); }
-    75%  { transform: scale(3); }
-    100% { transform: scale(1); }
+    0%   { transform: scale(1);    filter: brightness(0) invert(1); }
+    20%  { transform: scale(3.2);  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(215,29,67,0.8)); }
+    75%  { transform: scale(3);    filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(215,29,67,0.5)); }
+    90%  { transform: scale(1.1);  filter: brightness(0) invert(1); }
+    100% { transform: scale(1);    filter: brightness(0) invert(1); }
 }
 
 .logo-pixel {
