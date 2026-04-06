@@ -220,79 +220,163 @@
                     </div>
                     <div class="mockup-content">
                         <div class="mockup-sidebar">
-                            <div class="mockup-menu-item active">
+                            <div class="mockup-menu-item active" data-panel="dashboard">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
                                 דשבורד
                             </div>
-                            <div class="mockup-menu-item">
+                            <div class="mockup-menu-item" data-panel="screens">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                                 מסכים
                             </div>
-                            <div class="mockup-menu-item">
+                            <div class="mockup-menu-item" data-panel="content">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7.5L14.5 2z"/></svg>
                                 תכנים
                             </div>
-                            <div class="mockup-menu-item">
+                            <div class="mockup-menu-item" data-panel="schedule">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                                 תזמון
                             </div>
-                            <div class="mockup-menu-item">
+                            <div class="mockup-menu-item" data-panel="analytics">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
                                 אנליטיקס
                             </div>
                         </div>
                         <div class="mockup-main">
-                            <div class="mockup-header-bar">
-                                <h4>סקירה כללית</h4>
-                                <div class="mockup-date">מרץ 2026</div>
-                            </div>
-                            <div class="mockup-stats">
-                                <div class="mockup-stat-card">
-                                    <span class="mockup-stat-num">48</span>
-                                    <span class="mockup-stat-label">מסכים פעילים</span>
-                                    <div class="mockup-stat-bar" style="--width: 96%"></div>
+
+                            <!-- Panel: דשבורד -->
+                            <div class="mockup-panel active" id="panel-dashboard">
+                                <div class="mockup-header-bar">
+                                    <h4>סקירה כללית</h4>
+                                    <div class="mockup-date">מרץ 2026</div>
                                 </div>
-                                <div class="mockup-stat-card">
-                                    <span class="mockup-stat-num">12</span>
-                                    <span class="mockup-stat-label">קמפיינים פעילים</span>
-                                    <div class="mockup-stat-bar" style="--width: 72%"></div>
-                                </div>
-                                <div class="mockup-stat-card">
-                                    <span class="mockup-stat-num">99.8%</span>
-                                    <span class="mockup-stat-label">זמינות</span>
-                                    <div class="mockup-stat-bar" style="--width: 99%"></div>
-                                </div>
-                            </div>
-                            <div class="mockup-screens-grid">
-                                <div class="mockup-screen-card">
-                                    <div class="mockup-screen-thumb"></div>
-                                    <div class="mockup-screen-info">
-                                        <span>לובי ראשי</span>
-                                        <span class="status-dot online"></span>
+                                <div class="mockup-stats">
+                                    <div class="mockup-stat-card">
+                                        <span class="mockup-stat-num">48</span>
+                                        <span class="mockup-stat-label">מסכים פעילים</span>
+                                        <div class="mockup-stat-bar" style="--width: 96%"></div>
+                                    </div>
+                                    <div class="mockup-stat-card">
+                                        <span class="mockup-stat-num">12</span>
+                                        <span class="mockup-stat-label">קמפיינים פעילים</span>
+                                        <div class="mockup-stat-bar" style="--width: 72%"></div>
+                                    </div>
+                                    <div class="mockup-stat-card">
+                                        <span class="mockup-stat-num">99.8%</span>
+                                        <span class="mockup-stat-label">זמינות</span>
+                                        <div class="mockup-stat-bar" style="--width: 99%"></div>
                                     </div>
                                 </div>
-                                <div class="mockup-screen-card">
-                                    <div class="mockup-screen-thumb"></div>
-                                    <div class="mockup-screen-info">
-                                        <span>קומה 3 — מסדרון</span>
-                                        <span class="status-dot online"></span>
-                                    </div>
-                                </div>
-                                <div class="mockup-screen-card">
-                                    <div class="mockup-screen-thumb"></div>
-                                    <div class="mockup-screen-info">
-                                        <span>חדר ישיבות</span>
-                                        <span class="status-dot offline"></span>
-                                    </div>
-                                </div>
-                                <div class="mockup-screen-card">
-                                    <div class="mockup-screen-thumb"></div>
-                                    <div class="mockup-screen-info">
-                                        <span>כניסה ראשית</span>
-                                        <span class="status-dot online"></span>
-                                    </div>
+                                <div class="mockup-screens-grid">
+                                    <div class="mockup-screen-card"><div class="mockup-screen-thumb"></div><div class="mockup-screen-info"><span>לובי ראשי</span><span class="status-dot online"></span></div></div>
+                                    <div class="mockup-screen-card"><div class="mockup-screen-thumb"></div><div class="mockup-screen-info"><span>קומה 3 — מסדרון</span><span class="status-dot online"></span></div></div>
+                                    <div class="mockup-screen-card"><div class="mockup-screen-thumb"></div><div class="mockup-screen-info"><span>חדר ישיבות</span><span class="status-dot offline"></span></div></div>
+                                    <div class="mockup-screen-card"><div class="mockup-screen-thumb"></div><div class="mockup-screen-info"><span>כניסה ראשית</span><span class="status-dot online"></span></div></div>
                                 </div>
                             </div>
+
+                            <!-- Panel: מסכים -->
+                            <div class="mockup-panel" id="panel-screens">
+                                <div class="mockup-header-bar">
+                                    <h4>ניהול מסכים</h4>
+                                    <div class="mockup-badge">48 מסכים</div>
+                                </div>
+                                <div class="mockup-table">
+                                    <div class="mockup-table-row header">
+                                        <span>שם מסך</span><span>מיקום</span><span>רזולוציה</span><span>סטטוס</span>
+                                    </div>
+                                    <div class="mockup-table-row"><span>לובי ראשי</span><span>קומה 1</span><span>1920×1080</span><span class="status-dot online"></span></div>
+                                    <div class="mockup-table-row"><span>קומה 3 — מסדרון</span><span>קומה 3</span><span>3840×2160</span><span class="status-dot online"></span></div>
+                                    <div class="mockup-table-row"><span>חדר ישיבות A</span><span>קומה 2</span><span>1920×1080</span><span class="status-dot offline"></span></div>
+                                    <div class="mockup-table-row"><span>כניסה ראשית</span><span>כניסה</span><span>1080×1920</span><span class="status-dot online"></span></div>
+                                    <div class="mockup-table-row"><span>קפיטריה</span><span>קומה 1</span><span>3840×2160</span><span class="status-dot online"></span></div>
+                                </div>
+                            </div>
+
+                            <!-- Panel: תכנים -->
+                            <div class="mockup-panel" id="panel-content">
+                                <div class="mockup-header-bar">
+                                    <h4>ספריית תכנים</h4>
+                                    <div class="mockup-badge">36 פריטים</div>
+                                </div>
+                                <div class="mockup-content-grid">
+                                    <div class="mockup-content-card"><div class="mockup-content-thumb video"></div><span>קמפיין קיץ 2026</span><small>וידאו · 0:30</small></div>
+                                    <div class="mockup-content-card"><div class="mockup-content-thumb image"></div><span>מבצע סוף שנה</span><small>תמונה · PNG</small></div>
+                                    <div class="mockup-content-card"><div class="mockup-content-thumb slides"></div><span>פרזנטציה חברה</span><small>מצגת · 8 שקפים</small></div>
+                                    <div class="mockup-content-card"><div class="mockup-content-thumb video"></div><span>ברוכים הבאים</span><small>וידאו · 0:15</small></div>
+                                    <div class="mockup-content-card"><div class="mockup-content-thumb image"></div><span>תפריט יומי</span><small>תמונה · JPG</small></div>
+                                    <div class="mockup-content-card"><div class="mockup-content-thumb slides"></div><span>עדכוני חברה</span><small>מצגת · 5 שקפים</small></div>
+                                </div>
+                            </div>
+
+                            <!-- Panel: תזמון -->
+                            <div class="mockup-panel" id="panel-schedule">
+                                <div class="mockup-header-bar">
+                                    <h4>לוח תזמון</h4>
+                                    <div class="mockup-date">אפריל 2026</div>
+                                </div>
+                                <div class="mockup-schedule">
+                                    <div class="mockup-schedule-row active-camp">
+                                        <div class="mockup-schedule-time">08:00 – 12:00</div>
+                                        <div class="mockup-schedule-info">
+                                            <span class="mockup-schedule-name">קמפיין בוקר — מבצעים</span>
+                                            <span class="mockup-schedule-screens">32 מסכים</span>
+                                        </div>
+                                        <div class="mockup-schedule-bar" style="--w:50%"></div>
+                                    </div>
+                                    <div class="mockup-schedule-row">
+                                        <div class="mockup-schedule-time">12:00 – 15:00</div>
+                                        <div class="mockup-schedule-info">
+                                            <span class="mockup-schedule-name">שעות צהריים — תפריט</span>
+                                            <span class="mockup-schedule-screens">12 מסכים</span>
+                                        </div>
+                                        <div class="mockup-schedule-bar" style="--w:75%"></div>
+                                    </div>
+                                    <div class="mockup-schedule-row">
+                                        <div class="mockup-schedule-time">15:00 – 20:00</div>
+                                        <div class="mockup-schedule-info">
+                                            <span class="mockup-schedule-name">קמפיין אחה"צ — מותג</span>
+                                            <span class="mockup-schedule-screens">48 מסכים</span>
+                                        </div>
+                                        <div class="mockup-schedule-bar" style="--w:90%"></div>
+                                    </div>
+                                    <div class="mockup-schedule-row">
+                                        <div class="mockup-schedule-time">20:00 – 23:59</div>
+                                        <div class="mockup-schedule-info">
+                                            <span class="mockup-schedule-name">מצב לילה — לוגו</span>
+                                            <span class="mockup-schedule-screens">48 מסכים</span>
+                                        </div>
+                                        <div class="mockup-schedule-bar" style="--w:30%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Panel: אנליטיקס -->
+                            <div class="mockup-panel" id="panel-analytics">
+                                <div class="mockup-header-bar">
+                                    <h4>אנליטיקס</h4>
+                                    <div class="mockup-date">30 יום אחרונים</div>
+                                </div>
+                                <div class="mockup-analytics">
+                                    <div class="mockup-analytics-kpis">
+                                        <div class="mockup-kpi"><span class="mockup-kpi-num">142K</span><span class="mockup-kpi-label">חשיפות</span></div>
+                                        <div class="mockup-kpi"><span class="mockup-kpi-num">99.8%</span><span class="mockup-kpi-label">זמינות</span></div>
+                                        <div class="mockup-kpi"><span class="mockup-kpi-num">4.2s</span><span class="mockup-kpi-label">זמן טעינה</span></div>
+                                    </div>
+                                    <div class="mockup-chart">
+                                        <div class="mockup-chart-label">חשיפות יומיות</div>
+                                        <div class="mockup-bars">
+                                            <div class="mockup-bar" style="--h:60%"><span>א׳</span></div>
+                                            <div class="mockup-bar" style="--h:80%"><span>ב׳</span></div>
+                                            <div class="mockup-bar" style="--h:55%"><span>ג׳</span></div>
+                                            <div class="mockup-bar" style="--h:90%"><span>ד׳</span></div>
+                                            <div class="mockup-bar" style="--h:70%"><span>ה׳</span></div>
+                                            <div class="mockup-bar highlight" style="--h:100%"><span>ו׳</span></div>
+                                            <div class="mockup-bar" style="--h:40%"><span>ש׳</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

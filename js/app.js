@@ -185,6 +185,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ===== DASHBOARD MOCKUP TABS =====
+    const mockupMenuItems = document.querySelectorAll('.mockup-menu-item[data-panel]');
+    const mockupPanels = document.querySelectorAll('.mockup-panel');
+
+    mockupMenuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            mockupMenuItems.forEach(i => i.classList.remove('active'));
+            mockupPanels.forEach(p => p.classList.remove('active'));
+            item.classList.add('active');
+            document.getElementById('panel-' + item.dataset.panel).classList.add('active');
+        });
+    });
+
     // ===== INDUSTRIES TABS =====
     const indTabs = document.querySelectorAll('.ind-tab');
     const indCards = document.querySelectorAll('.industry-card[data-cat]');
