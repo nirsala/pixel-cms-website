@@ -269,6 +269,54 @@
       ]
     }
     </script>
+    <!-- Schema.org: WebSite + SearchAction (Sitelinks Searchbox) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://pixel-cms-website.onrender.com/#website",
+      "url": "https://pixel-cms-website.onrender.com/",
+      "name": "Pixel CMS",
+      "inLanguage": "he",
+      "description": "מערכת ניהול תוכן לשילוט דיגיטלי — ניהול מסכים לעסקים בישראל"
+    }
+    </script>
+
+    <!-- Schema.org: Reviews (Star ratings in SERP) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Pixel CMS",
+      "review": [
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "אריאל כהן"},
+          "datePublished": "2026-01-15",
+          "name": "חסכון עצום בניהול רשת מסעדות",
+          "reviewBody": "הטמענו Pixel CMS ב-14 סניפים. עדכון תפריט לוקח 30 שניות לכולם — לפני כן שלחנו USB לכל סניף. חסכון של עשרות שעות עבודה בחודש.",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "מירב אלון"},
+          "datePublished": "2025-11-03",
+          "name": "קל להתקנה, שירות מעולה",
+          "reviewBody": "ממשק ידידותי ופשוט מאוד. התמיכה מצוינת — ענו לי תוך 10 דקות בוואטסאפ. ממליצה לכל מסעדה שרוצה תפריט דיגיטלי.",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}
+        },
+        {
+          "@type": "Review",
+          "author": {"@type": "Person", "name": "דן ברקוביץ׳"},
+          "datePublished": "2025-09-20",
+          "name": "הפתרון הכי טוב לשרשרת מלונות",
+          "reviewBody": "מנהלים 4 מלונות עם עשרות מסכים בכל אחד. הדשבורד ברור, הזמינות 100%, והעובדים מתפעלים הכל בלי שום עזרה טכנית.",
+          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}
+        }
+      ]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -336,7 +384,7 @@
                 <span class="blink-dot"></span>
                 מערכת ניהול התוכן המתקדמת בישראל
             </div>
-            <h1>נהלו את כל המסכים שלכם<br><span class="text-gradient">ממקום אחד</span></h1>
+            <h1 id="hero-headline">נהלו את כל המסכים שלכם<br><span class="text-gradient">ממקום אחד</span></h1>
             <p class="hero-desc">מערכת ענן חכמה לניהול שילוט דיגיטלי — עדכנו תכנים, תזמנו קמפיינים ונטרו ביצועים בזמן אמת מכל מכשיר ומכל מקום.</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary btn-lg">התחילו עכשיו — הדגמה חינם</a>
@@ -1220,6 +1268,81 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">שלחו בקשה להדגמה</button>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section (AI Citation + Organic SEO) -->
+    <section class="section comparison-section" id="comparison">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">למה Pixel CMS?</span>
+                <h2>Pixel CMS לעומת פתרונות אחרים</h2>
+                <p class="section-desc">היחידה שבנויה ספציפית לשוק הישראלי — עברית, שקלים, תמיכה מקומית.</p>
+            </div>
+            <div class="comparison-table-wrap reveal">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>תכונה</th>
+                            <th class="col-us">Pixel CMS <span class="col-badge">ישראלי</span></th>
+                            <th>Xibo</th>
+                            <th>ScreenCloud</th>
+                            <th>Yodeck</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ממשק בעברית מלאה</td>
+                            <td class="col-us"><span class="check">✓</span></td>
+                            <td><span class="cross">✗</span></td>
+                            <td><span class="cross">✗</span></td>
+                            <td><span class="cross">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>חיוב בשקלים (₪)</td>
+                            <td class="col-us"><span class="check">✓</span></td>
+                            <td><span class="cross">✗</span></td>
+                            <td><span class="cross">✗</span></td>
+                            <td><span class="cross">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>תמיכה בעברית 24/7</td>
+                            <td class="col-us"><span class="check">✓</span></td>
+                            <td><span class="cross">✗</span></td>
+                            <td><span class="cross">✗</span></td>
+                            <td><span class="cross">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>פעולה ללא אינטרנט</td>
+                            <td class="col-us"><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="cross">✗</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>ניסיון חינם 14 יום</td>
+                            <td class="col-us"><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>תמחור מתחיל מ-</td>
+                            <td class="col-us">₪149/חודש</td>
+                            <td>$25/חודש</td>
+                            <td>$20/חודש</td>
+                            <td>$8/חודש</td>
+                        </tr>
+                        <tr>
+                            <td>הטמעה בדקות</td>
+                            <td class="col-us"><span class="check">✓</span></td>
+                            <td><span class="cross">✗</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>

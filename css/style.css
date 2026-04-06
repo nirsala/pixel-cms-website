@@ -2207,9 +2207,69 @@ body.acc-focus-highlight *:focus { outline: 3px solid #FFDD00 !important; outlin
     .privacy-bar { padding: 8px 12px; gap: 10px; }
 }
 
+/* ========================================
+   COMPARISON TABLE
+   ======================================== */
+.comparison-table-wrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+}
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+}
+.comparison-table th,
+.comparison-table td {
+    padding: 14px 18px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    white-space: nowrap;
+}
+.comparison-table th:first-child,
+.comparison-table td:first-child {
+    text-align: right;
+    font-weight: 500;
+    color: var(--color-text);
+    background: rgba(255,255,255,0.02);
+}
+.comparison-table thead th {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+.comparison-table tbody tr:last-child td { border-bottom: none; }
+.comparison-table tbody tr:hover td { background: rgba(255,255,255,0.03); }
+.col-us {
+    background: rgba(215,29,67,0.05) !important;
+    font-weight: 600;
+    color: var(--color-text) !important;
+}
+.comparison-table thead .col-us {
+    background: rgba(215,29,67,0.15) !important;
+    color: var(--color-primary-light) !important;
+}
+.col-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    background: var(--color-primary);
+    color: #fff;
+    padding: 1px 6px;
+    border-radius: 10px;
+    margin-right: 6px;
+    font-weight: 500;
+    vertical-align: middle;
+}
+.check { color: #34d399; font-size: 1.1rem; font-weight: 700; }
+.cross  { color: rgba(255,255,255,0.25); font-size: 1.1rem; }
+
 @media (max-width: 900px) {
     .testimonials-grid { grid-template-columns: 1fr; }
     .trust-badges { gap: 10px; }
+    .comparison-table th, .comparison-table td { padding: 10px 12px; font-size: 0.8rem; }
 }
 @media (max-width: 600px) {
     .trust-badge { font-size: 0.75rem; padding: 6px 10px; }

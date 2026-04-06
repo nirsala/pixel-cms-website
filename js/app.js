@@ -2,6 +2,25 @@
    Pixel CMS — App JavaScript
    ======================================== */
 
+/* ── Dynamic Headline — Message Match for PPC ── */
+(function() {
+    const params = new URLSearchParams(window.location.search);
+    const h = params.get('h');
+    const map = {
+        'restaurants':   'מערכת ניהול תפריטים דיגיטליים למסעדות',
+        'retail':        'שילוט דיגיטלי לחנויות — עדכן מבצעים בשניות',
+        'hotels':        'מסכי מידע חכמים לבתי מלון — ניהול מרכזי',
+        'offices':       'שילוט דיגיטלי למשרדים ובניינים',
+        'gyms':          'מסכי תוכן חכמים לחדרי כושר',
+        'education':     'שילוט דיגיטלי לבתי ספר ומוסדות חינוך',
+        'healthcare':    'מסכי מידע לבתי חולים ומרפאות',
+    };
+    if (h && map[h]) {
+        const el = document.getElementById('hero-headline');
+        if (el) el.textContent = map[h];
+    }
+})();
+
 /* ── UTM Tracking ── */
 (function() {
     try {
