@@ -2,6 +2,33 @@
    Pixel CMS — App JavaScript
    ======================================== */
 
+/* ── YouTube Facade — loads iframe only after page is interactive ── */
+(function() {
+    function loadYTFacade() {
+        var facade = document.getElementById('ytFacade');
+        if (!facade) return;
+        var videoId = facade.dataset.videoid;
+        var iframe = document.createElement('iframe');
+        iframe.id = 'heroVideo';
+        iframe.className = 'hero-yt';
+        iframe.setAttribute('src', 'https://www.youtube.com/embed/' + videoId +
+            '?autoplay=1&mute=1&loop=1&playlist=' + videoId +
+            '&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1');
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'autoplay; encrypted-media; fullscreen');
+        iframe.setAttribute('allowfullscreen', '');
+        facade.parentNode.replaceChild(iframe, facade);
+    }
+    // Load after page is interactive (requestIdleCallback or load event)
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadYTFacade, { timeout: 3000 });
+    } else {
+        window.addEventListener('load', function() {
+            setTimeout(loadYTFacade, 1000);
+        });
+    }
+})();
+
 /* ── Dynamic Headline — Message Match for PPC ── */
 (function() {
     const params = new URLSearchParams(window.location.search);
@@ -212,27 +239,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch(e) {}
 
         contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Fire conversion events
+            // Fire conversion events (non-blocking)
             trackEvent('generate_lead', {
                 event_category: 'contact_form',
                 event_label: 'demo_request',
                 value: 149
             });
-
-            const btn = contactForm.querySelector('button[type="submit"]');
-            const originalText = btn.textContent;
-            btn.textContent = 'נשלח בהצלחה! ✓';
-            btn.style.background = '#34D399';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = '';
-                btn.disabled = false;
-                contactForm.reset();
-            }, 3000);
+            // Let the form submit naturally to FormSubmit
+            // e.preventDefault() was removed intentionally
         });
     }
 

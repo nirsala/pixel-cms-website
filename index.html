@@ -319,7 +319,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap&font-display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="css/style.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -333,7 +334,7 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-inner">
             <a href="#home" class="nav-logo">
-                <img src="images/logo.png" alt="Xvision Digital Signage & Screens" class="nav-logo-img">
+                <img src="images/logo.png" alt="Xvision Digital Signage & Screens" class="nav-logo-img" width="120" height="48" fetchpriority="high">
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">ראשי</a></li>
@@ -360,16 +361,11 @@
     <section class="hero" id="home">
         <div class="hero-bg">
             <div class="hero-video-wrap">
-                <!-- Desktop: YouTube iframe -->
-                <iframe
-                    class="hero-yt"
-                    id="heroVideo"
-                    src="https://www.youtube.com/embed/0GlsWzQXK-w?autoplay=1&mute=1&loop=1&playlist=0GlsWzQXK-w&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1&origin=https://pixel-cms-website.onrender.com"
-                    frameborder="0"
-                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                    allowfullscreen
-                ></iframe>
-                <!-- Mobile: HTML5 video (autoplay works on all devices) -->
+                <!-- YouTube Facade: loads iframe only after page is interactive -->
+                <div class="hero-yt" id="ytFacade" data-videoid="0GlsWzQXK-w"
+                     style="background: #000 url('https://i.ytimg.com/vi/0GlsWzQXK-w/maxresdefault.jpg') center/cover no-repeat;">
+                </div>
+                <!-- Mobile: HTML5 video -->
                 <video
                     class="hero-mp4"
                     autoplay
@@ -1266,7 +1262,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <select name="מספר מסכים">
+                        <label for="screenCount" class="sr-only">כמה מסכים אתם צריכים?</label>
+                        <select name="מספר מסכים" id="screenCount">
                             <option value="">כמה מסכים אתם צריכים?</option>
                             <option value="1-5">1-5 מסכים</option>
                             <option value="6-15">6-15 מסכים</option>
@@ -1424,7 +1421,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="#home" class="footer-logo">
-                        <img src="images/logo.png" alt="Xvision Digital Signage & Screens" class="footer-logo-img">
+                        <img src="images/logo.png" alt="Xvision Digital Signage & Screens" class="footer-logo-img" width="140" height="56" loading="lazy">
                     </a>
                     <p>מערכת ניהול תוכן חכמה לשילוט דיגיטלי. שולטים במסכים, משדרגים את החוויה.</p>
                     <div class="footer-socials">
