@@ -70,13 +70,26 @@
     <section class="hero" id="home">
         <div class="hero-bg">
             <div class="hero-video-wrap">
+                <!-- Desktop: YouTube iframe -->
                 <iframe
+                    class="hero-yt"
                     id="heroVideo"
-                    src="https://www.youtube.com/embed/0GlsWzQXK-w?autoplay=1&mute=1&loop=1&playlist=0GlsWzQXK-w&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1"
+                    src="https://www.youtube.com/embed/0GlsWzQXK-w?autoplay=1&mute=1&loop=1&playlist=0GlsWzQXK-w&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1&origin=https://pixel-cms-website.onrender.com"
                     frameborder="0"
-                    allow="autoplay; encrypted-media"
+                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                     allowfullscreen
                 ></iframe>
+                <!-- Mobile: HTML5 video (autoplay works on all devices) -->
+                <video
+                    class="hero-mp4"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    webkit-playsinline
+                >
+                    <source src="images/keshet-video.mp4" type="video/mp4">
+                </video>
             </div>
             <div class="hero-video-overlay"></div>
         </div>

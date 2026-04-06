@@ -322,7 +322,8 @@ ul { list-style: none; }
     z-index: 0;
 }
 
-.hero-video-wrap iframe {
+.hero-video-wrap iframe,
+.hero-video-wrap video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -332,6 +333,16 @@ ul { list-style: none; }
     min-width: 100%;
     min-height: 100%;
     pointer-events: none;
+    object-fit: cover;
+}
+
+/* Desktop: show YouTube, hide HTML5 video */
+.hero-mp4 { display: none; }
+
+/* Mobile: hide YouTube iframe, show HTML5 video */
+@media (max-width: 768px) {
+    .hero-yt  { display: none; }
+    .hero-mp4 { display: block; }
 }
 
 .hero-video-overlay {

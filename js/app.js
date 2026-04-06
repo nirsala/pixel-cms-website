@@ -2,6 +2,28 @@
    Pixel CMS — App JavaScript
    ======================================== */
 
+// YouTube IFrame API — force autoplay on mobile
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+document.head.appendChild(tag);
+
+window.onYouTubeIframeAPIReady = function() {
+    new YT.Player('heroVideo', {
+        events: {
+            onReady: function(e) {
+                e.target.mute();
+                e.target.playVideo();
+            },
+            onStateChange: function(e) {
+                // keep looping
+                if (e.data === YT.PlayerState.ENDED) {
+                    e.target.playVideo();
+                }
+            }
+        }
+    });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Navbar scroll effect ---
