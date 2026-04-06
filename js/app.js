@@ -2,6 +2,42 @@
    Pixel CMS — App JavaScript
    ======================================== */
 
+/* ── UTM Tracking ── */
+(function() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const utmKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+        const stored = {};
+        utmKeys.forEach(k => { if (params.get(k)) stored[k] = params.get(k); });
+        if (Object.keys(stored).length) {
+            sessionStorage.setItem('utm_data', JSON.stringify(stored));
+        }
+    } catch(e) {}
+})();
+
+/* ── Conversion Helpers ── */
+function trackEvent(name, params) {
+    try {
+        if (window.gtag) gtag('event', name, params || {});
+        if (window.fbq) fbq('track', name === 'generate_lead' ? 'Lead' : 'CustomEvent', params || {});
+    } catch(e) {}
+}
+
+/* ── Scroll Depth Tracking ── */
+(function() {
+    const depths = [25, 50, 75, 90];
+    const reached = {};
+    window.addEventListener('scroll', function() {
+        const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        depths.forEach(d => {
+            if (pct >= d && !reached[d]) {
+                reached[d] = true;
+                trackEvent('scroll_depth', { depth: d + '%' });
+            }
+        });
+    }, { passive: true });
+})();
+
 // YouTube IFrame API — force autoplay on mobile
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -143,11 +179,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Contact form submission ---
+    // --- Contact form submission + conversion tracking ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        // Inject UTM hidden fields
+        try {
+            const utmData = JSON.parse(sessionStorage.getItem('utm_data') || '{}');
+            Object.entries(utmData).forEach(([k, v]) => {
+                const inp = document.createElement('input');
+                inp.type = 'hidden'; inp.name = k; inp.value = v;
+                contactForm.appendChild(inp);
+            });
+        } catch(e) {}
+
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
+
+            // Fire conversion events
+            trackEvent('generate_lead', {
+                event_category: 'contact_form',
+                event_label: 'demo_request',
+                value: 149
+            });
 
             const btn = contactForm.querySelector('button[type="submit"]');
             const originalText = btn.textContent;
@@ -163,6 +216,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 3000);
         });
     }
+
+    // Track CTA clicks
+    document.querySelectorAll('.btn-primary, .btn-whatsapp').forEach(btn => {
+        btn.addEventListener('click', () => {
+            trackEvent('cta_click', { button_text: btn.textContent.trim() });
+        });
+    });
 
     // --- Active nav link highlighting ---
     const sections = document.querySelectorAll('section[id]');
