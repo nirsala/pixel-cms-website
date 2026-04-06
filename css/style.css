@@ -125,13 +125,21 @@ ul { list-style: none; }
 
 .nav-logo {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 6px;
     transition: var(--transition);
 }
 
 .nav-logo:hover {
     transform: scale(1.03);
+}
+
+.nav-logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    /* הלוגו לבן/אדום על רקע כהה — אם הוא לבן בלבד, הסר את הפילטר */
+    filter: brightness(0) invert(1);
 }
 
 .logo-pixel {
@@ -1610,9 +1618,16 @@ ul { list-style: none; }
 
 .footer-logo {
     display: inline-flex;
-    align-items: baseline;
+    align-items: center;
     gap: 6px;
     margin-bottom: 16px;
+}
+
+.footer-logo-img {
+    height: 56px;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
 }
 
 .footer-brand p {
