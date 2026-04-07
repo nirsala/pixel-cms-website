@@ -1073,6 +1073,7 @@ ul { list-style: none; }
     align-items: center;
     padding-top: 20px;
     color: var(--color-text-muted);
+    transform: scaleX(-1);
 }
 
 /* ========================================
@@ -1775,7 +1776,7 @@ ul { list-style: none; }
     }
 
     .process-arrow {
-        transform: rotate(90deg);
+        transform: rotate(90deg) scaleX(-1);
         padding: 10px 0;
     }
 
