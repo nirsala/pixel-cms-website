@@ -60,7 +60,7 @@ Pixel CMS מתאים לכל עסק המשתמש במסכי תצוגה:
 
 ## יצירת קשר
 
-- **אתר:** https://pixel-cms-website.onrender.com/
+- **אתר:** https://dds.xvision.co.il/
 - **אימייל:** info@pixelcms.co.il
 - **טלפון:** 03-000-0000
 - **שעות פעילות:** א׳–ה׳ 09:00–18:00
