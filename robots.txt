@@ -1,26 +1,22 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-# AI Crawlers — Allow indexing for AI search
+Sitemap: https://dds.xvision.co.il/sitemap.xml
+
+# AI Crawlers
 User-agent: GPTBot
+Allow: /blog/
 Allow: /
 
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: Claude-Web
+User-agent: ClaudeBot
+Allow: /blog/
 Allow: /
 
 User-agent: PerplexityBot
-Allow: /
-
-User-agent: anthropic-ai
+Allow: /blog/
 Allow: /
 
 User-agent: Google-Extended
+Allow: /blog/
 Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-Sitemap: https://dds.xvision.co.il/sitemap.xml
