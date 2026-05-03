@@ -9,46 +9,87 @@ const { publishFile, buildArticlePage, buildBlogIndex } = require('./github-publ
 const { buildBacklinks } = require('./backlinks');
 const { generateDailyReport } = require('./rankings-report');
 
-// מאגר מילות מפתח — המערכת תייצר כותרת חדשה לכל אחת בכל הרצה
+// מאגר מילות מפתח — Pixel CMS (שילוט דיגיטלי + מוזיקה לעסקים)
+// המערכת מסתחררת על המילים — מאמר חדש בכל יום
 const KEYWORDS = [
-  'מסכי LED לחנויות',
-  'שילוט דיגיטלי למסעדות',
-  'מסכי LED חיצוניים',
-  'CMS למסכי LED',
-  'מסכי LED לובי',
-  'מסכי LED לבריכה',
-  'מחיר מסך LED לעסק',
-  'מסכי LED מלונות',
-  'שילוט דיגיטלי רשתות',
-  'מסכי LED תל אביב',
-  'מסכי LED ירושלים',
-  'מסכי LED חיפה',
-  'תחזוקת מסכי LED',
-  'השוואת מסכי LED',
+  // ── שילוט דיגיטלי / CMS — Core ──
+  'תוכנה לשילוט דיגיטלי',
+  'מערכת ניהול תוכן למסכים',
+  'CMS למסכים',
+  'פלטפורמת שילוט דיגיטלי',
+  'שילוט דיגיטלי בענן',
+  'ניהול מסכים מרחוק',
+  'ניהול מרכזי של מסכים',
+  'תזמון תוכן למסכים',
+  'תזמון קמפיינים פרסומיים',
+  'הזרמת תוכן בזמן אמת',
+  'אנליטיקס למסכים',
+  'דוח ביצועים מסכים',
+  'סנכרון מסכים',
+  'ניהול קבוצות מסכים',
+  'ניהול סניפים מרחוק',
+
+  // ── סוגי מסכים ──
+  'קיר וידאו לעסקים',
+  'תפריט דיגיטלי למסעדות',
+  'מסכי תפריט דיגיטליים',
+  'מסכי קופה דיגיטליים',
+  'מסכי מידע לעסקים',
+  'קיוסק מידע אינטראקטיבי',
+  'מסך מגע אינטראקטיבי',
+  'מסכי ויטרינה דיגיטליים',
+  'מסכי דלפק לעסקים',
+  'מסכי מעלית דיגיטליים',
+  'צגי מחיר דיגיטליים',
+  'מסכי LED לעסקים',
   'שלטי חוצות דיגיטליים',
-  'מסכי LED חינוך',
-  'שילוט דיגיטלי בנקים',
-  'מסכי LED ספורט',
-  'מסכי LED חדר כושר',
-  'שילוט דיגיטלי בריאות',
-  'מסכי LED אירועים',
   'תצוגות ויטרינה LED',
-  'מסכי LED פתח תקווה',
-  'מסכי LED רמת גן',
-  'היתר שלט חוצות',
-  'IP65 מסכי LED',
-  'pixel pitch LED',
-  'מסכי LED סופרמרקט',
-  'שלטים דיגיטליים לעסקים',
-  'תפריט דיגיטלי למסעדה',
-  'מסכי LED למלונות',
-  'מסכי LED לאולמות אירועים',
+
+  // ── ענפים — Long-tail ──
+  'שילוט דיגיטלי למסעדות',
+  'שילוט דיגיטלי לבתי קפה',
+  'שילוט דיגיטלי לחנויות',
+  'שילוט דיגיטלי לסופרמרקטים',
+  'שילוט דיגיטלי לרשתות מזון',
+  'שילוט דיגיטלי לבתי מלון',
   'שילוט דיגיטלי לקניונים',
-  'מסכי LED לחדרי כושר',
-  'מסכי LED לסופרמרקט',
-  'מסכי LED לתחנות דלק',
-  'מסכי LED לקליניקות',
-  'שלטי חוצות LED ישראל',
+  'שילוט דיגיטלי לחדרי כושר',
+  'שילוט דיגיטלי לספא',
+  'שילוט דיגיטלי לבנקים',
+  'שילוט דיגיטלי לחברות ביטוח',
+  'שילוט דיגיטלי למוסדות חינוך',
+  'שילוט דיגיטלי לבתי חולים',
+  'שילוט דיגיטלי למרפאות',
+  'שילוט דיגיטלי לבתי אבות',
+  'שילוט דיגיטלי לעיריות',
+  'שילוט דיגיטלי למשרדים',
+  'שילוט דיגיטלי למפעלים',
+  'שילוט דיגיטלי לתחנות דלק',
+  'שילוט דיגיטלי לאולמות אירועים',
+  'שילוט דיגיטלי לשדות תעופה',
+
+  // ── גאוגרפי ──
+  'שילוט דיגיטלי תל אביב',
+  'שילוט דיגיטלי ירושלים',
+  'שילוט דיגיטלי חיפה',
+  'שילוט דיגיטלי באר שבע',
+
+  // ── מוזיקה לעסקים ──
+  'מוזיקה לעסקים',
+  'מוסיקה לעסקים',
+  'מוזיקת רקע לעסקים',
+  'פלייליסטים לעסקים',
+  'רישוי מוזיקה לעסקים',
+  'מוזיקה למסעדות',
+  'מוזיקה לחנויות',
+  'מוזיקה לבתי מלון',
+  'מוזיקה לחדרי כושר',
+  'מוזיקה לספא',
+  'מוזיקה לבתי קפה',
+  'מערכת השמעה לעסקים',
+  'מיתוג סוניק לעסק',
+  'אקו״ם פד״ל לעסק',
+  'ניהול מוזיקה מרחוק',
 ];
 
 // מעקב כותרות שפורסמו — מונע כפילויות
@@ -298,10 +339,31 @@ async function runSEO(site, log, apiKey) {
         }
         const newUrl = `${siteUrl}/blog/${articleSlug}.html`;
         if (!existingUrls.includes(newUrl)) existingUrls.push(newUrl);
-        // בנה sitemap חדש
+
+        // ── דפים ראשיים ידניים — תמיד נשמרים ──
+        const STATIC_PAGES = [
+          { url: `${siteUrl}/`,                       priority: '1.0',  freq: 'weekly'  },
+          { url: `${siteUrl}/#features`,              priority: '0.8',  freq: 'weekly'  },
+          { url: `${siteUrl}/#how-it-works`,          priority: '0.8',  freq: 'weekly'  },
+          { url: `${siteUrl}/#industries`,            priority: '0.8',  freq: 'weekly'  },
+          { url: `${siteUrl}/#pricing`,               priority: '0.95', freq: 'weekly'  },
+          { url: `${siteUrl}/#comparison`,            priority: '0.8',  freq: 'weekly'  },
+          { url: `${siteUrl}/#contact`,               priority: '0.8',  freq: 'weekly'  },
+          { url: `${siteUrl}/music.html`,             priority: '0.95', freq: 'monthly' },
+          { url: `${siteUrl}/blog/`,                  priority: '0.9',  freq: 'weekly'  },
+        ];
+
+        // מאמרי הבלוג בלבד מהרשימה הקיימת
+        const blogArticles = existingUrls.filter(u => /\/blog\/.+\.html$/.test(u));
+
+        const allEntries = [
+          ...STATIC_PAGES.map(p => `  <url><loc>${p.url}</loc><changefreq>${p.freq}</changefreq><priority>${p.priority}</priority></url>`),
+          ...blogArticles.map(u => `  <url><loc>${u}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>`)
+        ];
+
         const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${existingUrls.map(u => `  <url><loc>${u}</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>`).join('\n')}
+${allEntries.join('\n')}
 </urlset>`;
         const smResult = await pub('sitemap.xml', sitemap, `seo: update sitemap — ${articleSlug}`);
         if (smResult.ok) {
@@ -380,12 +442,9 @@ async function updateBlogIndex(topic, slug, date, log) {
     // שמור רק 50 האחרונים
     articles = articles.slice(0, 50);
 
-    // פרסם אינדקס JSON
-    const { publishFile, buildBlogIndex } = require('./github-publisher');
-    await publishFile(indexPath, JSON.stringify(articles, null, 2), `seo: update blog index`);
-
-    // פרסם דף HTML של בלוג
-    await publishFile('blog/index.html', buildBlogIndex(articles), `seo: update blog page`);
+    // פרסם אינדקס JSON בלבד — blog/index.html הוא static עם fetch dynamic מ-index.json
+    const { publishFile } = require('./github-publisher');
+    await publishFile(indexPath, JSON.stringify(articles, null, 2), `seo: update blog index.json`);
 
     log('success', `✅ אינדקס בלוג עודכן (${articles.length} מאמרים)`);
   } catch(e) {
