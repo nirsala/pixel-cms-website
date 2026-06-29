@@ -69,6 +69,19 @@ app.use('/api', (req, res, next) => {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Redirect stray URLs that Google found on dds.xvision.co.il
+const DDS_REDIRECTS = {
+  '/pool.html': 'https://xvision.co.il/pool.html',
+  '/products.html': 'https://xvision.co.il/products.html',
+  '/accessibility.html': 'https://xvision.co.il/accessibility.html',
+  '/cms.html': 'https://xvision.co.il/cms.html',
+  '/blog/dds.xvision.co.il': 'https://xvision.co.il/',
+};
+Object.entries(DDS_REDIRECTS).forEach(([from, to]) => {
+  app.get(from, (req, res) => res.redirect(301, to));
+});
+app.get('/מסכי-לד-לעסקים.html', (req, res) => res.redirect(301, 'https://xvision.co.il/%D7%9E%D7%A1%D7%9B%D7%99-%D7%9C%D7%93-%D7%9C%D7%A2%D7%A1%D7%A7%D7%99%D7%9D.html'));
+
 // GET sites
 app.get('/api/sites', (req, res) => res.json(sites));
 
