@@ -16,17 +16,20 @@ const CAPTIONS = [
 ];
 
 
-// ── LinkedIn Direct API ──────────────────────
+// ── LinkedIn Direct API — REST v20250101 ──────
 // token: linkedin.com/developers → My Apps → OAuth 2.0 tools → get token
-// Scopes needed: w_member_social, r_liteprofile
+// Scopes needed: w_member_social, openid, profile
 async function postToLinkedIn(topic, articleUrl, caption) {
   const token = process.env.LINKEDIN_ACCESS_TOKEN || '';
   if (!token) return { skipped: true, platform: 'LinkedIn', reason: 'אין LINKEDIN_ACCESS_TOKEN' };
 
   try {
-    // קבל person URN
+    // קבל person URN דרך OpenID Connect
     const meRes = await fetch('https://api.linkedin.com/v2/userinfo', {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'LinkedIn-Version': '20250101',
+      }
     });
     if (!meRes.ok) return { ok: false, platform: 'LinkedIn', error: `auth: ${meRes.status}` };
     const me = await meRes.json();
@@ -36,40 +39,46 @@ async function postToLinkedIn(topic, articleUrl, caption) {
       ? `📝 מאמר חדש: ${topic}\n\n${caption}\n\n👉 קרא עוד: ${articleUrl}`
       : caption;
 
+    // LinkedIn REST API /rest/posts (חדש — מחליף את /v2/ugcPosts)
     const body = {
       author: urn,
-      lifecycleState: 'PUBLISHED',
-      specificContent: {
-        'com.linkedin.ugc.ShareContent': {
-          shareCommentary: { text: postText },
-          shareMediaCategory: articleUrl ? 'ARTICLE' : 'NONE',
-          ...(articleUrl ? {
-            media: [{
-              status: 'READY',
-              originalUrl: articleUrl,
-              title: { text: topic || 'Pixel by Keshet — מסכי LED' },
-            }]
-          } : {})
-        }
+      commentary: postText,
+      visibility: 'PUBLIC',
+      distribution: {
+        feedDistribution: 'MAIN_FEED',
+        targetEntities: [],
+        thirdPartyDistributionChannels: []
       },
-      visibility: { 'com.linkedin.ugc.MemberNetworkVisibility': 'PUBLIC' }
+      lifecycleState: 'PUBLISHED',
+      isReshareDisabledByAuthor: false
     };
 
-    const res = await fetch('https://api.linkedin.com/v2/ugcPosts', {
+    if (articleUrl) {
+      body.content = {
+        article: {
+          source: articleUrl,
+          title: topic || 'Pixel by Keshet — מסכי LED',
+          description: caption.substring(0, 200)
+        }
+      };
+    }
+
+    const res = await fetch('https://api.linkedin.com/rest/posts', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
+        'LinkedIn-Version': '20250101',
         'X-Restli-Protocol-Version': '2.0.0',
       },
       body: JSON.stringify(body)
     });
-    const data = await res.json();
-    if (res.ok && data.id) {
-      const postId = data.id.split(':').pop();
-      return { ok: true, platform: 'LinkedIn', url: `https://www.linkedin.com/feed/update/${data.id}` };
+
+    if (res.ok) {
+      return { ok: true, platform: 'LinkedIn', url: 'https://www.linkedin.com/feed/' };
     }
-    return { ok: false, platform: 'LinkedIn', error: JSON.stringify(data) };
+    const data = await res.json().catch(() => ({}));
+    return { ok: false, platform: 'LinkedIn', error: `${res.status}: ${JSON.stringify(data)}` };
   } catch(e) {
     return { ok: false, platform: 'LinkedIn', error: e.message };
   }
@@ -108,7 +117,7 @@ async function postToSocial(topic, articleUrl) {
       },
       body: JSON.stringify({
         post: postText,
-        platforms: ['facebook', 'instagram', 'linkedin'],
+        platforms: ['facebook', 'instagram'],
         mediaUrls: [imageUrl],
       }),
     });
