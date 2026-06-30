@@ -84,12 +84,54 @@ async function postToLinkedIn(topic, articleUrl, caption) {
   }
 }
 
+// ── Facebook Graph API ───────────────────────
+// page token: Meta Business Suite → Settings → Page Access Tokens
+// Scopes needed: pages_manage_posts, pages_read_engagement
+const FB_PAGES = [
+  { id: '61570662146287', tokenEnv: 'FACEBOOK_PAGE1_TOKEN' },
+  { id: '61588043862296', tokenEnv: 'FACEBOOK_PAGE2_TOKEN' },
+];
+
+async function postToFacebook(postText) {
+  const results = [];
+  for (const page of FB_PAGES) {
+    const token = process.env[page.tokenEnv] || '';
+    if (!token) {
+      console.log(`[social] Facebook page ${page.id}: אין ${page.tokenEnv}`);
+      results.push({ ok: false, id: page.id, reason: `אין ${page.tokenEnv}` });
+      continue;
+    }
+    try {
+      const res = await fetch(`https://graph.facebook.com/v19.0/${page.id}/feed`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: postText, access_token: token }),
+      });
+      const data = await res.json();
+      if (data.id) {
+        console.log(`[social] ✅ Facebook page ${page.id}: פורסם (${data.id})`);
+        results.push({ ok: true, id: page.id, postId: data.id });
+      } else {
+        console.error(`[social] ❌ Facebook page ${page.id}: ${data.error?.message || JSON.stringify(data)}`);
+        results.push({ ok: false, id: page.id, error: data.error?.message });
+      }
+    } catch(e) {
+      console.error(`[social] ❌ Facebook page ${page.id}: ${e.message}`);
+      results.push({ ok: false, id: page.id, error: e.message });
+    }
+  }
+  return results;
+}
+
 async function postToSocial(topic, articleUrl) {
   const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
   const caption = CAPTIONS[dayOfYear % CAPTIONS.length];
-  const imageUrl = getArticleImage(topic, articleUrl);
 
-  // ── LinkedIn ישיר (ללא Ayrshare) ──
+  const postText = topic
+    ? `📝 מאמר חדש: ${topic}\n\n${caption}\n\n👉 קרא עוד: ${articleUrl}`
+    : caption;
+
+  // ── LinkedIn ישיר ──
   const linkedinResult = await postToLinkedIn(topic, articleUrl, caption);
   if (linkedinResult.skipped) {
     console.log(`[social] LinkedIn: ${linkedinResult.reason}`);
@@ -99,35 +141,11 @@ async function postToSocial(topic, articleUrl) {
     console.error(`[social] ❌ LinkedIn: ${linkedinResult.error}`);
   }
 
-  if (!cfg.ayrshareApiKey) {
-    console.log('[social] אין Ayrshare API Key — מדלג Facebook/Instagram');
-    return linkedinResult.ok ? linkedinResult : { skipped: true };
-  }
+  // ── Facebook ישיר (שני דפים) ──
+  const fbResults = await postToFacebook(postText);
+  const fbOk = fbResults.some(r => r.ok);
 
-  const postText = topic
-    ? `📝 מאמר חדש: ${topic}\n\n${caption}\n\n👉 קרא עוד: ${articleUrl}`
-    : caption;
-
-  try {
-    const res = await fetch('https://app.ayrshare.com/api/post', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${cfg.ayrshareApiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        post: postText,
-        platforms: ['facebook', 'instagram'],
-        mediaUrls: [imageUrl],
-      }),
-    });
-    const data = await res.json();
-    console.log('[social] פורסם ברשתות חברתיות:', data.status || 'ok');
-    return { ok: true, data };
-  } catch(e) {
-    console.error('[social] שגיאה:', e.message);
-    return { ok: false, error: e.message };
-  }
+  return { ok: linkedinResult.ok || fbOk, linkedin: linkedinResult, facebook: fbResults };
 }
 
 module.exports = { postToSocial };
