@@ -1,0 +1,1 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"/><meta http-equiv="refresh" content="0;url=https://dds.xvision.co.il/blog/"/><link rel="canonical" href="https://dds.xvision.co.il/blog/"/></head><body><a href="https://dds.xvision.co.il/blog/">מעבר לבלוג...</a></body></html>
