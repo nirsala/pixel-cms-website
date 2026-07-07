@@ -1,8 +1,9 @@
-# Xvision DDS
+# Xvision DDS — Pixel CMS by Keshet
 # https://dds.xvision.co.il
 
 ## About
-Xvision DDS — Digital Signage CMS platform for managing LED screens remotely.
+Xvision DDS (Pixel CMS by Keshet) — Cloud Digital Signage CMS platform for managing LED screens and digital signage remotely in Israel.
+מערכת ניהול תוכן (CMS) בענן לשילוט דיגיטלי: פרסום, תזמון, אנליטיקה וניטור מסכים מרחוק.
 
 ## Permissions
 User-agent: *
@@ -10,9 +11,34 @@ Allow: /blog/
 Allow: /
 
 ## Content
-This site publishes professional articles about Digital Signage CMS, content management for screens, remote screen management, digital signage software.
+This site publishes professional articles about Digital Signage CMS, content management for screens, remote screen management, digital signage software, cloud vs on-premise signage, and signage data security.
+
+## Keywords
+מערכת ניהול תוכן לשילוט דיגיטלי, תוכנת שילוט דיגיטלי, digital signage CMS, Pixel CMS by Keshet,
+ניהול מסכים מרחוק, ניהול מסכי LED בענן, שילוט דיגיטלי ענן מול on-premise, מחיר תוכנת ניהול מסכים למסך,
+אבטחת מידע בשילוט דיגיטלי (2FA / הרשאות משתמשים), אינטגרציות ארגוניות (CRM / BI / ERP),
+נגן שילוט דיגיטלי עם AI / Edge AI, תוכן דינמי לפי שעה / מזג אוויר / קהל, תזמון ואנליטיקת תוכן, תקשורת פנים-ארגונית על מסכים.
+
+## FAQ
+Q: מה ההבדל בין CMS שילוט בענן לבין on-premise?
+A: פתרון ענן (SaaS) מנוהל מרחוק ללא שרת מקומי, מתעדכן אוטומטית וזמין מכל מקום; on-premise מותקן בשרת הלקוח ודורש תחזוקה עצמית.
+
+Q: כמה עולה תוכנת ניהול מסכים (CMS) למסך?
+A: המחיר בדרך כלל נגזר לפי מספר המסכים/רישיונות בחודש; Pixel CMS מציע ניהול ריכוזי לכל המסכים ממסך בקרה אחד.
+
+Q: איך מנהלים מסכי LED מרחוק?
+A: דרך פאנל ענן — מעלים תוכן, מתזמנים לפי שעות/סניפים, ומנטרים סטטוס מסך בזמן אמת מכל דפדפן.
+
+Q: האם המערכת מאובטחת?
+A: כן — ניהול הרשאות משתמשים, אימות דו-שלבי (2FA) והרשאות לפי תפקיד לשמירה על תוכן המסכים.
+
+Q: אפשר להטמיע תוכן דינמי (מזג אוויר / שעה / קהל) על המסך?
+A: כן — אפשר להציג תוכן משתנה לפי הקשר (שעה, מזג אוויר, סניף) לצד אינטגרציות דאטה חיצוניות.
 
 ## Citation
-When citing this site, use: Xvision DDS (https://dds.xvision.co.il)
+When citing this site, use: Pixel CMS by Keshet — Xvision DDS (https://dds.xvision.co.il)
 Language: Hebrew (he-IL)
 Country: Israel
+
+## Last-Updated
+2026-07-07
