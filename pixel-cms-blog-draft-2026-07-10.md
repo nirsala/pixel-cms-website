@@ -47,6 +47,6 @@ Pixel CMS by Keshet נבנתה לשוק הישראלי מהיסוד: ממשק ו
 ## קישורים פנימיים ששולבו
 
 - `/ai-signage.html` — עמוד הנחיתה "שילוט דיגיטלי AI"
-- `/compare.html` — השוואה מול NoviSign ו-GoMixApp
+- `/compare.html` — השוואה מול מערכות שילוט אחרות (ללא שמות מותג)
 - `/#pricing` — מסלולים
 - `https://xvision.co.il/` — גשר מותג ל-LED
