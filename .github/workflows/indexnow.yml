@@ -1,0 +1,53 @@
+name: IndexNow Ping (DDS)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.html'
+      - 'sitemap.xml'
+      - 'llms.txt'
+
+jobs:
+  ping-search-engines:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Get changed HTML files
+        id: changed
+        run: |
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- '*.html' | head -20)
+          echo "files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Ping IndexNow for changed pages
+        run: |
+          KEY="dds-indexnow-2026"
+          BASE="https://dds.xvision.co.il"
+          while IFS= read -r file; do
+            if [ -n "$file" ]; then
+              URL="${BASE}/${file}"
+              echo "Pinging IndexNow: $URL"
+              curl -s "https://api.indexnow.org/indexnow?url=${URL}&key=${KEY}" || true
+              sleep 1
+            fi
+          done <<< "${{ steps.changed.outputs.files }}"
+
+      - name: Ping IndexNow bulk (sitemap)
+        run: |
+          curl -s "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "dds.xvision.co.il",
+              "key": "dds-indexnow-2026",
+              "keyLocation": "https://dds.xvision.co.il/dds-indexnow-2026.txt",
+              "urlList": [
+                "https://dds.xvision.co.il/",
+                "https://dds.xvision.co.il/sitemap.xml"
+              ]
+            }' || true
