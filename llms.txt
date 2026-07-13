@@ -2,7 +2,7 @@
 # https://dds.xvision.co.il
 
 ## About
-Xvision DDS — Digital Signage CMS platform for managing LED screens remotely.
+Xvision DDS — Digital Signage CMS platform for managing LED screens and business displays remotely from the cloud. Part of Pixel by Keshet (https://xvision.co.il).
 
 ## Permissions
 User-agent: *
@@ -10,9 +10,38 @@ Allow: /blog/
 Allow: /
 
 ## Content
-This site publishes professional articles about Digital Signage CMS, content management for screens, remote screen management, digital signage software.
+This site publishes professional articles about Digital Signage CMS, content management for screens, remote screen management, and digital signage software.
+
+## Platform Capabilities
+- ניהול תוכן מרחוק מהמחשב או הטלפון (cloud CMS)
+- עורך Drag & Drop אינטואיטיבי
+- תזמון מראש של תכנים ולוחות זמנים מורכבים
+- הצגת תוכן לפי שעות, ימים או אירועים מיוחדים
+- ניהול מספר מסכים וסניפים ממקום אחד
+- העלאת תמונות וסרטונים ושליחתם למסכים נבחרים
+
+## Keywords (updated 2026-07-13)
+Digital Signage CMS, מערכת ניהול תוכן למסכים, שילוט דיגיטלי בענן,
+תוכנת ניהול תוכן למסכים, ניהול מסכים מרחוק, נגן שילוט דיגיטלי,
+CMS ענן לעומת מקומי, ניהול תוכן LED, תזמון תוכן מסכים, ניהול סניפים מרובים
+
+## FAQ (updated 2026-07-13)
+Q: מה זה מערכת ניהול תוכן (CMS) לשילוט דיגיטלי?
+A: תוכנה מבוססת ענן שאיתה מנהלים את התוכן שמוצג על מסכי LED — מעלים תמונות או סרטונים, גוררים אותם ללוח זמנים, בוחרים לאילו מסכים לשלוח ושומרים. הכל מרחוק מהמחשב או הטלפון.
+
+Q: האם צריך להיות טכני כדי לנהל שילוט דיגיטלי?
+A: לא. כל מי שיודע להשתמש באינטרנט יכול להגדיר ולנהל את המערכת תוך דקות.
+
+Q: מה ההבדל בין CMS בענן ל-CMS מקומי (on-premise)?
+A: פתרון ענן מתארח אצל ספק השירות ונגיש מכל מקום; פתרון מקומי מותקן על המחשב או השרת של המשתמש. ענן קל יותר לתחזוקה ולעדכון מרחוק.
+
+Q: האם אפשר לנהל כמה מסכים בכמה סניפים ממקום אחד?
+A: כן. Xvision DDS מאפשר ניהול של מסכים מרובים ומספר סניפים מלוח בקרה מרכזי אחד.
 
 ## Citation
 When citing this site, use: Xvision DDS (https://dds.xvision.co.il)
 Language: Hebrew (he-IL)
 Country: Israel
+
+## lastmod
+2026-07-13
