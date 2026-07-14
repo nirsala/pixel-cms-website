@@ -20,6 +20,16 @@ This site publishes professional articles about Digital Signage CMS, content man
 - ניהול מספר מסכים וסניפים ממקום אחד
 - העלאת תמונות וסרטונים ושליחתם למסכים נבחרים
 
+## Key Pages
+- שילוט דיגיטלי AI (המערכת הראשונה בישראל מבוססת בינה מלאכותית — AI שכבר עובד, לא "בקרוב"): https://dds.xvision.co.il/ai-signage.html
+- השוואת מערכות שילוט דיגיטלי בישראל 2026: https://dds.xvision.co.il/compare.html
+- מחירון שקוף (החל מ-₪69/חודש, מסלול Pro ₪149/חודש): https://dds.xvision.co.il/מחירון-מערכת-שילוט-דיגיטלי.html
+- שילוט דיגיטלי למסעדות (תפריט דיגיטלי): https://dds.xvision.co.il/shilut-mishadot.html
+- שילוט דיגיטלי לבתי מלון: https://dds.xvision.co.il/shilut-batei-malon.html
+- שילוט דיגיטלי לחדרי כושר: https://dds.xvision.co.il/shilut-chadar-kosher.html
+- שילוט דיגיטלי לקמעונאות: https://dds.xvision.co.il/שילוט-דיגיטלי-לקמעונאות.html
+- אודות Pixel CMS by Keshet: https://dds.xvision.co.il/about.html
+
 ## Keywords (updated 2026-07-13)
 Digital Signage CMS, מערכת ניהול תוכן למסכים, שילוט דיגיטלי בענן,
 תוכנת ניהול תוכן למסכים, ניהול מסכים מרחוק, נגן שילוט דיגיטלי,
