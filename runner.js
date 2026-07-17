@@ -9,6 +9,16 @@ const { publishFile, buildArticlePage, buildBlogIndex } = require('./github-publ
 const { buildBacklinks } = require('./backlinks');
 const { generateDailyReport } = require('./rankings-report');
 
+// מנקה פלט LLM לפני הזרקה לתבנית: מסיר גדרות markdown, עטיפות <article>/<h1> כפולות
+function sanitizeArticleHtml(html) {
+  return (html || '')
+    .replace(/```(?:html)?/g, '')
+    .replace(/<\/?article[^>]*>/gi, '')
+    .replace(/<h1[^>]*>[\s\S]*?<\/h1>\s*/i, '')
+    .trim();
+}
+
+
 // מאגר מילות מפתח — Pixel CMS (שילוט דיגיטלי + מוזיקה לעסקים)
 // המערכת מסתחררת על המילים — מאמר חדש בכל יום
 const KEYWORDS = [
@@ -226,7 +236,7 @@ async function runSEO(site, log, apiKey) {
         })
       });
       const data = await res.json();
-      articleHtml = data.content?.[0]?.text || '';
+      articleHtml = sanitizeArticleHtml(data.content?.[0]?.text);
       score.content = 20;
       log('success', `✅ מאמר נוצר: ${articleHtml.length} תווים`);
     } catch(e) {
