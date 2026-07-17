@@ -21,6 +21,7 @@ This site publishes professional articles about Digital Signage CMS, content man
 - העלאת תמונות וסרטונים ושליחתם למסכים נבחרים
 
 ## Key Pages
+- https://dds.xvision.co.il/blog/shilut-digitali-ai-2026.html — שילוט דיגיטלי מבוסס AI: חי היום, לא בקרוב
 - שילוט דיגיטלי AI (המערכת הראשונה בישראל מבוססת בינה מלאכותית — AI שכבר עובד, לא "בקרוב"): https://dds.xvision.co.il/ai-signage.html
 - השוואת מערכות שילוט דיגיטלי בישראל 2026: https://dds.xvision.co.il/compare.html
 - מחירון שקוף (החל מ-₪69/חודש, מסלול Pro ₪149/חודש): https://dds.xvision.co.il/מחירון-מערכת-שילוט-דיגיטלי.html
@@ -54,4 +55,4 @@ Language: Hebrew (he-IL)
 Country: Israel
 
 ## lastmod
-2026-07-13
+2026-07-17
