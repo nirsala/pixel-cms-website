@@ -10,6 +10,10 @@
 - [השוואת מערכות שילוט דיגיטלי בישראל 2026](https://dds.xvision.co.il/compare.html): Pixel CMS מול NoviSign, GoMixApp ואחרות
 - [מחירון שקוף](https://dds.xvision.co.il/מחירון-מערכת-שילוט-דיגיטלי.html): החל מ-69 ₪/חודש, מסלול Pro ‏149 ₪/חודש
 - [שילוט דיגיטלי למסעדות](https://dds.xvision.co.il/shilut-mishadot.html): תפריט דיגיטלי מבוסס AI
+- [תפריט דיגיטלי למסעדות ובתי קפה](https://dds.xvision.co.il/tafrit-digitali.html): התפריט הדיגיטלי היחיד בישראל שמעוצב אוטומטית על ידי AI
+- [שילוט דיגיטלי לבתי קפה](https://dds.xvision.co.il/shilut-batei-cafe.html): תפריט מעל הדלפק ומבצעים מתוזמנים
+- [שילוט דיגיטלי למשרדים ולובי בניינים](https://dds.xvision.co.il/shilut-misradim.html): מסכי לובי, לוח דיירים ותקשורת פנים-ארגונית
+- [שילוט דיגיטלי לבתי ספר ומוסדות חינוך](https://dds.xvision.co.il/shilut-batei-sefer.html): לוח הודעות דיגיטלי חכם
 - [שילוט דיגיטלי לבתי מלון](https://dds.xvision.co.il/shilut-batei-malon.html): מסכי לובי, אירועים וחדרים
 - [שילוט דיגיטלי לחדרי כושר](https://dds.xvision.co.il/shilut-chadar-kosher.html): לוחות שיעורים ומסכי מוטיבציה
 - [שילוט דיגיטלי לקמעונאות](https://dds.xvision.co.il/שילוט-דיגיטלי-לקמעונאות.html): מבצעים ומחירים בזמן אמת
@@ -60,4 +64,4 @@ Country: Israel
 
 ## lastmod
 
-2026-07-17
+2026-07-18
