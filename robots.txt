@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /data/
+Disallow: /server.js
+Disallow: /config.js
 
 Sitemap: https://dds.xvision.co.il/sitemap.xml
 

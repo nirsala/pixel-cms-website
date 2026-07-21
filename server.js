@@ -62,10 +62,20 @@ function requireAuth(req, res, next) {
   res.status(401).json({ error: 'לא מורשה' });
 }
 
+// נתיבים ציבוריים: הגשת ביקורת וקריאת ביקורות מאושרות.
+// /reviews/admin/* מכוון במפורש החוצה כדי שהמודרציה תישאר מוגנת.
+function isPublicApi(p) {
+  if (p.startsWith('/auth/')) return true;
+  if (p.startsWith('/reviews/admin')) return false;
+  return p === '/reviews' || p === '/reviews/schema';
+}
+
 app.use('/api', (req, res, next) => {
-  if (req.path.startsWith('/auth/')) return next();
+  if (isPublicApi(req.path)) return next();
   requireAuth(req, res, next);
 });
+
+require('./reviews').register(app, requireAuth);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

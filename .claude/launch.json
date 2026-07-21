@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pixel-cms",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js"],
+      "port": 5555
+    }
+  ]
+}

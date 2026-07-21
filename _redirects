@@ -1,3 +1,22 @@
+# ── חסימת קבצים תפעוליים ──
+# הדומיין מוגש כאתר סטטי מכל ה-repo, ולכן קבצי נתונים וקוד שרת
+# נגישים פומבית. אלה חוסמים אותם. אימות חובה אחרי deploy.
+# js/app.js (פרונט) נשאר נגיש — נחסמים רק קבצי השרת שבשורש.
+/data/* /404.html 404
+/package.json /404.html 404
+/package-lock.json /404.html 404
+/server.js /404.html 404
+/config.js /404.html 404
+/reviews.js /404.html 404
+/runner.js /404.html 404
+/monitor.js /404.html 404
+/social.js /404.html 404
+/backlinks.js /404.html 404
+/directories.js /404.html 404
+/article-images.js /404.html 404
+/rankings-report.js /404.html 404
+/github-publisher.js /404.html 404
+
 /pool.html https://xvision.co.il/pool.html 301
 /products.html https://xvision.co.il/products.html 301
 /accessibility.html https://xvision.co.il/accessibility.html 301
