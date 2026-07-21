@@ -7,3 +7,7 @@ node_modules/
 
 # Local Cloudflare Wrangler cache/state
 .wrangler/
+
+# נתוני ריצה של האפליקציה — מכילים PII, טוקנים ו-hash של סיסמת אדמין.
+# האתר מוגש סטטית מה-repo, ולכן כל קובץ כאן נחשף לאינטרנט.
+data/
