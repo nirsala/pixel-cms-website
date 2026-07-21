@@ -46,71 +46,63 @@
 
     <!-- Schema.org: SoftwareApplication + AggregateRating -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "Pixel CMS",
-      "alternateName": "פיקסל מערכת ניהול תוכן מסכים",
-      "description": "מערכת ניהול תוכן לשילוט דיגיטלי — ניהול מסכי לד, מסכי תצוגה, קיוסקי מידע ומסכי פרסום לעסקים בישראל",
-      "applicationCategory": "BusinessApplication",
-      "applicationSubCategory": "Digital Signage Software",
-      "operatingSystem": "Web, Android, Windows",
-      "inLanguage": "he",
-      "url": "https://dds.xvision.co.il/",
-      "screenshot": "https://dds.xvision.co.il/images/dashboard-screenshot.jpg",
-      "featureList": "ניהול מסכים מרובים, תזמון תוכן אוטומטי, אנליטיקס בזמן אמת, עיצוב גרירה ושחרור, תמיכה 24/7",
-      "offers": {
-        "@type": "AggregateOffer",
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pixel CMS",
+  "alternateName": "פיקסל מערכת ניהול תוכן מסכים",
+  "description": "מערכת ניהול תוכן לשילוט דיגיטלי — ניהול מסכי לד, מסכי תצוגה, קיוסקי מידע ומסכי פרסום לעסקים בישראל",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Digital Signage Software",
+  "operatingSystem": "Web, Android, Windows",
+  "inLanguage": "he",
+  "url": "https://dds.xvision.co.il/",
+  "screenshot": "https://dds.xvision.co.il/images/dashboard-screenshot.jpg",
+  "featureList": "ניהול מסכים מרובים, תזמון תוכן אוטומטי, אנליטיקס בזמן אמת, עיצוב גרירה ושחרור, תמיכה 24/7",
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "ILS",
+    "lowPrice": "69",
+    "highPrice": "149",
+    "offerCount": "3",
+    "priceValidUntil": "2026-12-31",
+    "availability": "https://schema.org/InStock",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "מסלול סטארטר",
+        "price": "69",
         "priceCurrency": "ILS",
-        "lowPrice": "69",
-        "highPrice": "149",
-        "offerCount": "3",
-        "priceValidUntil": "2026-12-31",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "מסלול ביזנס",
+        "price": "149",
+        "priceCurrency": "ILS",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "מסלול אנטרפרייז",
+        "priceCurrency": "ILS",
         "availability": "https://schema.org/InStock",
-        "offers": [
-          {"@type": "Offer", "name": "מסלול סטארטר", "price": "69", "priceCurrency": "ILS", "availability": "https://schema.org/InStock"},
-          {"@type": "Offer", "name": "מסלול ביזנס", "price": "149", "priceCurrency": "ILS", "availability": "https://schema.org/InStock"},
-          {"@type": "Offer", "name": "מסלול אנטרפרייז", "priceCurrency": "ILS", "availability": "https://schema.org/InStock", "description": "מחיר מותאם אישית לרשתות וארגונים"}
-        ]
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": {"@type": "Person", "name": "אריאל כהן"},
-          "datePublished": "2026-01-15",
-          "name": "חסכון עצום בניהול רשת מסעדות",
-          "reviewBody": "הטמענו Pixel CMS ב-14 סניפים. עדכון תפריט לוקח 30 שניות לכולם — לפני כן שלחנו USB לכל סניף. חסכון של עשרות שעות עבודה בחודש.",
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}
-        },
-        {
-          "@type": "Review",
-          "author": {"@type": "Person", "name": "מירב אלון"},
-          "datePublished": "2025-11-03",
-          "name": "קל להתקנה, שירות מעולה",
-          "reviewBody": "ממשק ידידותי ופשוט מאוד. התמיכה מצוינת — ענו לי תוך 10 דקות בוואטסאפ. ממליצה לכל מסעדה שרוצה תפריט דיגיטלי.",
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}
-        },
-        {
-          "@type": "Review",
-          "author": {"@type": "Person", "name": "דן ברקוביץ׳"},
-          "datePublished": "2025-09-20",
-          "name": "הפתרון הכי טוב לשרשרת מלונות",
-          "reviewBody": "מנהלים 4 מלונות עם עשרות מסכים בכל אחד. הדשבורד ברור, הזמינות 100%, והעובדים מתפעלים הכל בלי שום עזרה טכנית.",
-          "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"}
-        }
-      ],
-      "audience": {
-        "@type": "BusinessAudience",
-        "audienceType": "עסקים, רשתות קמעונאיות, מסעדות, בתי מלון, מוסדות חינוך, חדרי כושר, אולמות אירועים"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "@id": "https://xvision.co.il/#organization",
-        "name": "Pixel by Keshet",
-        "url": "https://xvision.co.il"
+        "description": "מחיר מותאם אישית לרשתות וארגונים"
       }
-    }
-    </script>
+    ]
+  },
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "עסקים, רשתות קמעונאיות, מסעדות, בתי מלון, מוסדות חינוך, חדרי כושר, אולמות אירועים"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://xvision.co.il/#organization",
+    "name": "Pixel by Keshet",
+    "url": "https://xvision.co.il"
+  }
+}
+</script>
 
     <!-- Schema.org: Organization (E-E-A-T) -->
     <script type="application/ld+json">
