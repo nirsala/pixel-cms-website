@@ -42,35 +42,7 @@
     <link rel="dns-prefetch" href="//connect.facebook.net">
     <link rel="dns-prefetch" href="//www.youtube.com">
 
-    <!-- ============================================================
-         Google Analytics 4 — הכנס את מזהה ה-GA4 שלך (G-XXXXXXXXXX)
-         ============================================================ -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', { 'send_page_view': true });
-    </script>
-    -->
-
-    <!-- ============================================================
-         Meta (Facebook) Pixel — הכנס את מזהה הפיקסל שלך
-         ============================================================ -->
-    <!--
-    <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'XXXXXXXXXX');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=XXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
-    -->
+    <!-- Analytics: single source of truth is /analytics.js (loaded in head) -->
 
     <!-- Schema.org: SoftwareApplication + AggregateRating -->
     <script type="application/ld+json">
@@ -153,6 +125,7 @@
       "sameAs": [
         "https://www.wikidata.org/entity/Q140376974",
         "https://www.linkedin.com/company/pixel-by-keshet",
+        "https://www.google.com/maps?cid=1646470387848700485",
         "https://www.facebook.com/pixelbykeshet",
         "https://www.instagram.com/pixel_by_keshet"
       ],
@@ -165,7 +138,7 @@
       "knowsAbout": ["digital signage CMS", "מערכת ניהול שילוט דיגיטלי", "LED screen management", "AI digital signage"],
       "contactPoint": [{
         "@type": "ContactPoint",
-        "telephone": "+972-55-9732343",
+        "telephone": "055-973-2343",
         "contactType": "customer service",
         "availableLanguage": "Hebrew",
         "hoursAvailable": "Mo-Th 09:00-18:00",
@@ -397,6 +370,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <meta name="theme-color" content="#d71d43">
+  <script src="/analytics.js" defer></script>
 </head>
 <body>
     <div id="page-wrap">
@@ -1527,7 +1501,8 @@
                     </a>
                     <p>מערכת ניהול תוכן חכמה לשילוט דיגיטלי. שולטים במסכים, משדרגים את החוויה.</p>
                     <div class="footer-socials">
-                        <a href="https://www.linkedin.com/company/pixel-by-keshet" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/company/pixel-by-keshet",
+"https://www.google.com/maps?cid=1646470387848700485" target="_blank" rel="noopener" aria-label="LinkedIn">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
                         </a>
                         <a href="https://www.facebook.com/pixelbykeshet" target="_blank" rel="noopener" aria-label="Facebook">
